@@ -1,0 +1,27 @@
+{
+    "name": "bidhan/laravel-db-manager",
+    "description": "Advance Laravel Database Manager",
+    "type": "library",
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bidhan\\Bhadhan\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bidhan\\Bhadhan\\BidhanDBManagerServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Bidhan Baniya",
+            "email": "bidhanbaniya789@gmail.com"
+        }
+    ],
+    "license": "MIT"
+}
