@@ -1,4 +1,3 @@
-
 # Laravel DB Schema Manager 📊🔧
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/bidhan/laravel-db-manager.svg?style=flat-square)](https://packagist.org/packages/bidhan/laravel-db-manager)
@@ -45,6 +44,50 @@ Here is an example of how to use the package:
 
 ```php
 GOTO bhadhan/dashboard URI To Preview Dashboard
+```
+
+### Advanced Usage
+
+#### Get All Database Tables
+```php
+use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
+
+$allTables = BhadhanDBManagerService::getAllDbTables();
+```
+
+#### Get Primary Key of a Table
+```php
+use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
+
+$primaryKey = BhadhanDBManagerService::getPrimaryKey('tableName');
+```
+
+#### Get Foreign Keys
+```php
+use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
+
+$foreignKeys = BhadhanDBManagerService::getForeignKeys();
+```
+
+#### Get All Tables with Size
+```php
+use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
+
+$tablesWithSize = BhadhanDBManagerService::getAllTableWithSize();
+```
+
+#### Get Current Schema Size
+```php
+use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
+
+$schemaSize = BhadhanDBManagerService::getCurrentSchemaSize();
+```
+
+#### Get All Database Views
+```php
+use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
+
+$allViews = BhadhanDBManagerService::getAllDBViews();
 ```
 
 ## Features ✨
