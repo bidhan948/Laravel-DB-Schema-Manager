@@ -46,8 +46,6 @@
 @endsection
 @section('scripts')
     <script src="{{ asset('vendor/bidhan/bhadhan/js/prism.min.js') }}"></script>
-    {{-- https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-sql.min.js"></script> --}}
     <script src="{{ asset('vendor/bidhan/bhadhan/js/prism-sql.min.js') }}"></script>
     <script>
         new Vue({
