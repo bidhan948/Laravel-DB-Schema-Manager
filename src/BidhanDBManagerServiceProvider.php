@@ -2,6 +2,8 @@
 
 namespace Bidhan\Bhadhan;
 
+use Bidhan\Bhadhan\Interfaces\BhadhanDBManagerServiceInterface;
+use Bidhan\Bhadhan\Services\BhadhanDBManagerService;
 use Illuminate\Support\ServiceProvider;
 
 class BidhanDBManagerServiceProvider extends ServiceProvider
@@ -16,6 +18,8 @@ class BidhanDBManagerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/resources/css' => public_path('vendor/bidhan/bhadhan/css'),
         ], 'public');
+
+        $this->app->bind(BhadhanDBManagerServiceInterface::class, BhadhanDBManagerService::class);
     }
 
     public function boot()

@@ -3,6 +3,7 @@
 namespace Bidhan\Bhadhan\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Bidhan\Bhadhan\Interfaces\BhadhanDBManagerServiceInterface;
 use Bidhan\Bhadhan\Services\BhadhanDBManagerService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -12,6 +13,13 @@ use Illuminate\Support\Facades\DB;
 
 class SchemaController extends Controller
 {
+    private BhadhanDBManagerServiceInterface $bhadhanDBManagerService;
+
+    public function __construct(BhadhanDBManagerServiceInterface $bhadhanDBManagerService)
+    {
+        $this->bhadhanDBManagerService = $bhadhanDBManagerService;
+    }
+
     public function index(Request $request): View | JsonResponse
     {
         if (config('bhadhan.mode') != 'dev') {
@@ -19,17 +27,17 @@ class SchemaController extends Controller
         }
 
         if ($request->has('isAjax') && $request->isAjax) {
-            $databaseName = BhadhanDBManagerService::getCurrentDatabaseName();
+            $databaseName = $this->bhadhanDBManagerService->getCurrentDatabaseName();
             $data['connection_name'] = $databaseName;
-            $data['tables'] = BhadhanDBManagerService::getAllDbTables();
+            $data['tables'] = $this->bhadhanDBManagerService->getAllDbTables();
 
             if ($request->has('tableName')) {
                 $data[$request->tableName] = DB::select(
                     'SELECT * FROM information_schema.columns WHERE table_name = ? ORDER BY ordinal_position',
                     [$request->tableName]
                 );
-                $data['primary_key'] = BhadhanDBManagerService::getPrimaryKey($request->tableName);
-                $data['foreign_keys'] = BhadhanDBManagerService::getForeignKeys($request->tableName);
+                $data['primary_key'] = $this->bhadhanDBManagerService->getPrimaryKey($request->tableName);
+                $data['foreign_keys'] = $this->bhadhanDBManagerService->getForeignKeys($request->tableName);
             }
 
             return response()->json($data);
@@ -41,9 +49,9 @@ class SchemaController extends Controller
     public function performanceMetrics(Request $request): View | JsonResponse
     {
         if ($request->has('isAjax') && $request->isAjax) {
-            $data['tableWithSizes'] = BhadhanDBManagerService::getAllTableWithSize();
-            $data['totalSchemaSize'] = BhadhanDBManagerService::getCurrentSchemaSize();
-            $data['dbViews'] = BhadhanDBManagerService::getAllDBViews();
+            $data['tableWithSizes'] = $this->bhadhanDBManagerService->getAllTableWithSize();
+            $data['totalSchemaSize'] = $this->bhadhanDBManagerService->getCurrentSchemaSize();
+            $data['dbViews'] = $this->bhadhanDBManagerService->getAllDBViews();
             return response()->json($data);
         }
 
