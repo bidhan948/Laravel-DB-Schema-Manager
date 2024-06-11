@@ -52,42 +52,42 @@ GOTO bhadhan/dashboard URI To Preview Dashboard
 ```php
 use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
 
-$allTables = BhadhanDBManagerService::getAllDbTables();
+$allTables = (new BhadhanDBManagerService())->getAllDbTables();
 ```
 
 #### Get Primary Key of a Table
 ```php
 use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
 
-$primaryKey = BhadhanDBManagerService::getPrimaryKey('tableName');
+$primaryKey = (new BhadhanDBManagerService())->getPrimaryKey('tableName');
 ```
 
 #### Get Foreign Keys
 ```php
 use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
 
-$foreignKeys = BhadhanDBManagerService::getForeignKeys();
+$foreignKeys = (new BhadhanDBManagerService())->getForeignKeys();
 ```
 
 #### Get All Tables with Size
 ```php
 use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
 
-$tablesWithSize = BhadhanDBManagerService::getAllTableWithSize();
+$tablesWithSize = (new BhadhanDBManagerService())->getAllTableWithSize();
 ```
 
 #### Get Current Schema Size
 ```php
 use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
 
-$schemaSize = BhadhanDBManagerService::getCurrentSchemaSize();
+$schemaSize = (new BhadhanDBManagerService())->getCurrentSchemaSize();
 ```
 
 #### Get All Database Views
 ```php
 use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
 
-$allViews = BhadhanDBManagerService::getAllDBViews();
+$allViews = (new BhadhanDBManagerService())->getAllDBViews();
 ```
 
 ## Middleware Configuration
