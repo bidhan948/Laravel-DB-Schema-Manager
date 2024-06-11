@@ -90,6 +90,23 @@ use Bidhan\Bhadhan\Services\BhadhanDBManagerService\BhadhanDBManagerService;
 $allViews = BhadhanDBManagerService::getAllDBViews();
 ```
 
+## Middleware Configuration
+
+If you want to use middleware with this package, feel free to change the `bhadhan.php` configuration file. Locate the `auth_middleware` key and add your middleware inside the array.
+
+```php
+return [
+    // Other configuration settings
+
+    'auth_middleware' => [
+        // Add your middleware here
+    ],
+
+    // Other configuration settings
+];
+
+```
+
 ## Features ✨
 
 - Create and manage database schemas effortlessly.
